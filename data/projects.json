@@ -1,0 +1,30 @@
+[
+  {
+    "title": "SIMBA",
+    "slug": "simba",
+    "summary": "Scalable similarity search architecture for chess decision spaces.",
+    "roleSignals": ["ML engineer", "backend engineer", "data systems"],
+    "techStack": ["Python", "FAISS", "PyTorch", "AWS"],
+    "demoUrl": "",
+    "repoUrl": "https://github.com/meet989898/SIMBA",
+    "status": "live",
+    "metrics": ["10M position target", "sub-second retrieval goal", "ranking evaluation"],
+    "resumeBullets": [
+      "Built a large-scale similarity search system for chess positions using FAISS and evaluation-aware embeddings."
+    ]
+  },
+  {
+    "title": "Pharmacy Document Intelligence",
+    "slug": "pharmacy-doc-intelligence",
+    "summary": "Public-safe ML system for semantic retrieval and document decision support.",
+    "roleSignals": ["ML engineer", "AI engineer", "backend engineer"],
+    "techStack": ["Python", "Transformers", "FastAPI", "Docker", "AWS"],
+    "demoUrl": "",
+    "repoUrl": "",
+    "status": "planned",
+    "metrics": ["hybrid retrieval", "semantic reranking", "public-safe synthetic data"],
+    "resumeBullets": [
+      "Built a transformer-based document intelligence system with retrieval, reranking, and deployable API workflows."
+    ]
+  }
+]

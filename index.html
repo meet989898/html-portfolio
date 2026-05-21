@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Meet Gandhi - software engineer and ML/AI builder focused on retrieval systems, backend platforms, and applied machine learning."
+    />
+    <title>Meet Gandhi | ML Systems Portfolio</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://api.github.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="signal-field" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Meet Gandhi home">
+        <span>MG</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#systems">Systems</a>
+        <a href="#timeline">Timeline</a>
+        <a href="./assets/Meet_Gandhi_Resume.pdf">Resume</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">ML systems, retrieval, backend engineering</p>
+          <h1>Meet Gandhi builds production-minded AI projects with measurable systems depth.</h1>
+          <p class="lede">
+            Computer Science graduate student at RIT with experience across PyTorch, FAISS, FastAPI,
+            AWS, Docker, data pipelines, and research-grade evaluation.
+          </p>
+          <div class="hero-actions" aria-label="Contact and profile links">
+            <a class="button primary" href="#work">View projects</a>
+            <a class="button" href="https://github.com/meet989898">GitHub</a>
+            <a class="button" href="https://www.linkedin.com/in/meetjg/">LinkedIn</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Profile highlights">
+          <div class="metric">
+            <span>Focus</span>
+            <strong>Retrieval + ML platforms</strong>
+          </div>
+          <div class="metric">
+            <span>Current</span>
+            <strong>MS CS, RIT</strong>
+          </div>
+          <div class="metric">
+            <span>Signals</span>
+            <strong>SWE / ML / Backend / Data</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section class="band" id="work">
+        <div class="section-heading">
+          <p class="eyebrow">Featured project system</p>
+          <h2>Portfolio projects with live demos, metrics, and case-study depth.</h2>
+        </div>
+        <div class="toolbar" aria-label="Project filters">
+          <button class="filter active" data-filter="all" type="button">All</button>
+          <button class="filter" data-filter="ml" type="button">ML</button>
+          <button class="filter" data-filter="retrieval" type="button">Retrieval</button>
+          <button class="filter" data-filter="backend" type="button">Backend</button>
+          <button class="filter" data-filter="data" type="button">Data</button>
+        </div>
+        <div class="project-grid" id="project-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="systems" id="systems">
+        <div class="section-heading">
+          <p class="eyebrow">Computer science coverage</p>
+          <h2>Each project is chosen to compound across ML and mainstream engineering roles.</h2>
+        </div>
+        <div class="systems-grid">
+          <article>
+            <span>01</span>
+            <h3>Machine learning</h3>
+            <p>Modeling, retrieval, reranking, evaluation, calibration, and model-card discipline.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Software engineering</h3>
+            <p>Typed APIs, CI, tests, clean architecture, deployable demos, and readable case studies.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Systems and data</h3>
+            <p>Vector search, indexing, pipelines, caching, observability, and dataset safety.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Product signal</h3>
+            <p>Interactive demos that make the project understandable to recruiters and engineers.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band timeline" id="timeline">
+        <div class="section-heading">
+          <p class="eyebrow">Rollout cadence</p>
+          <h2>Portfolio first, then a new approved ML project every three days.</h2>
+        </div>
+        <ol class="timeline-list">
+          <li>
+            <span>Now</span>
+            <strong>Launch portfolio hub</strong>
+            <p>Deploy domain, add current GitHub projects, and establish the manifest system.</p>
+          </li>
+          <li>
+            <span>Next</span>
+            <strong>Pharmacy document intelligence</strong>
+            <p>Public-safe synthetic document retrieval with semantic search, reranking, and API demo.</p>
+          </li>
+          <li>
+            <span>Then</span>
+            <strong>Poker behavior modeling</strong>
+            <p>Upgrade or rebuild poker analytics into a predictive ML and strategy simulation project.</p>
+          </li>
+          <li>
+            <span>Ongoing</span>
+            <strong>Meaningful maintenance</strong>
+            <p>Randomized daily commits only when they improve tests, docs, benchmarks, or demos.</p>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Meet Gandhi</p>
+      <div>
+        <a href="mailto:gandhi.meet.mg@gmail.com">Email</a>
+        <a href="https://github.com/meet989898">GitHub</a>
+        <a href="https://www.linkedin.com/in/meetjg/">LinkedIn</a>
+      </div>
+    </footer>
+
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>
