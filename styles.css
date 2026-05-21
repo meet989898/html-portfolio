@@ -332,10 +332,37 @@ h3 {
   gap: 1rem;
 }
 
+.resume-page h1 {
+  font-size: clamp(2.6rem, 6vw, 5.4rem);
+}
+
+.resume-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.resume-grid article {
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  padding: 1.2rem;
+}
+
+.resume-grid h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.resume-grid p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 @media (max-width: 900px) {
   .hero,
   .project-grid,
-  .systems-grid {
+  .systems-grid,
+  .resume-grid {
     grid-template-columns: 1fr;
   }
 
