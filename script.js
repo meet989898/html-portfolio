@@ -141,6 +141,31 @@ filters.forEach((button) => {
 
 hydrateProjects();
 
+const counters = document.querySelectorAll("[data-count]");
+const counterObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const element = entry.target;
+      const target = Number(element.dataset.count);
+      const duration = 800;
+      const start = performance.now();
+
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        element.textContent = Math.round(target * progress).toString();
+        if (progress < 1) requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+      counterObserver.unobserve(element);
+    });
+  },
+  { threshold: 0.35 }
+);
+
+counters.forEach((counter) => counterObserver.observe(counter));
+
 const canvas = document.querySelector("#signal-field");
 const ctx = canvas.getContext("2d");
 let width;
