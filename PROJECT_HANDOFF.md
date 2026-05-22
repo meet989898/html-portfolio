@@ -73,6 +73,8 @@ $env:NODE_PATH="C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\depen
 & "C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" scripts/verify-portfolio.js
 ```
 
+The verifier checks that manifest-backed cards render, each filter returns the expected visible-card count, the live status text updates correctly, and desktop/mobile screenshots are still captured.
+
 ## Deployment Notes
 
 The GitHub repository is:

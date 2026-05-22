@@ -34,6 +34,25 @@ powershell -ExecutionPolicy Bypass -File .\scripts\validate-project-manifest.ps1
 
 This checks required fields, duplicate slugs, allowed filter tags, status values, and URL shape without requiring Node dependencies.
 
+### Browser Smoke Test
+
+Run the static preview server in one terminal:
+
+```powershell
+& "C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" .\scripts\serve-static.js
+```
+
+Then run the browser verifier in another:
+
+```powershell
+$env:NODE_PATH="C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules;C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\.pnpm\playwright-core@1.60.0\node_modules"
+& "C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" .\scripts\verify-portfolio.js
+```
+
+The smoke test now verifies manifest hydration, all project filters, visible-card counts, status copy, and captures desktop/mobile screenshots.
+
+The resume page also consumes `data/projects.json` when served over HTTP(S), using each project's first `resumeBullets` entry as the primary project summary. That keeps the portfolio cards and resume project blurbs aligned while preserving bundled fallback content for `file://` previews.
+
 ## Maintenance Policy
 
 Ongoing commits should be meaningful: tests, docs, benchmark updates, demo improvements, accessibility fixes, model cards, or real issue fixes. Empty churn and timestamp-only edits are intentionally out of scope.
