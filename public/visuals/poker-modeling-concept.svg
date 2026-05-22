@@ -1,0 +1,21 @@
+<svg width="1152" height="720" viewBox="0 0 1152 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1152" height="720" fill="#101112"/>
+  <rect x="118" y="108" width="228" height="322" rx="28" fill="#F7F3EA" transform="rotate(-9 118 108)"/>
+  <rect x="226" y="78" width="228" height="322" rx="28" fill="#50C8FF" transform="rotate(7 226 78)"/>
+  <rect x="322" y="120" width="228" height="322" rx="28" fill="#F6C85F" transform="rotate(15 322 120)"/>
+  <circle cx="256" cy="262" r="36" fill="#D65A31"/>
+  <circle cx="388" cy="244" r="36" fill="#101112"/>
+  <path d="M112 532C205 461 289 511 374 532C476 558 530 439 621 451C696 461 733 545 816 522C890 502 934 430 1042 463" stroke="#9DF27F" stroke-width="10" stroke-linecap="round"/>
+  <path d="M626 182H986" stroke="#F7F3EA" stroke-width="18" stroke-linecap="round"/>
+  <path d="M626 244H916" stroke="#F7F3EA" stroke-opacity=".5" stroke-width="14" stroke-linecap="round"/>
+  <path d="M626 302H1026" stroke="#F7F3EA" stroke-opacity=".25" stroke-width="14" stroke-linecap="round"/>
+  <g>
+    <circle cx="692" cy="451" r="24" fill="#50C8FF"/>
+    <circle cx="816" cy="522" r="24" fill="#F6C85F"/>
+    <circle cx="934" cy="430" r="24" fill="#FF6B78"/>
+  </g>
+  <g font-family="Geist, Arial, sans-serif" font-weight="700">
+    <text x="626" y="126" fill="#F7F3EA" font-size="36">Behavior Modeling</text>
+    <text x="626" y="366" fill="#F7F3EA" fill-opacity=".58" font-size="22">actions, features, confidence, scenarios</text>
+  </g>
+</svg>

@@ -2,69 +2,153 @@
   {
     "title": "SIMBA",
     "slug": "simba",
-    "subtitle": "Scalable Similarity Search Benchmarking Architecture",
-    "cardStatus": "Live GitHub project",
-    "summary": "Scalable similarity search architecture for chess decision spaces.",
-    "roleSignals": ["ML engineer", "backend engineer", "data systems"],
-    "techStack": ["Python", "FAISS", "PyTorch", "AWS"],
-    "portfolioTags": ["ml", "retrieval", "backend", "data"],
-    "demoUrl": "#timeline",
-    "repoUrl": "https://github.com/meet989898/SIMBA",
+    "subtitle": "Similarity search for chess decision spaces",
+    "cardStatus": "Live repository",
     "status": "live",
-    "metrics": ["10M position target", "sub-second retrieval goal", "ranking evaluation"],
+    "statusLabel": "Live",
+    "featuredOrder": 0,
+    "summary": "A retrieval system for finding strategically similar chess positions and supporting faster decision analysis.",
+    "longSummary": "SIMBA explores how representation, indexing, and ranking quality come together in a search-heavy technical system. It is useful portfolio signal because it connects algorithms, data representation, backend thinking, evaluation, and applied AI into one explainable project.",
+    "roleSignals": ["Machine learning", "Backend engineering", "Data systems"],
+    "techStack": ["Python", "FAISS", "PyTorch", "AWS"],
+    "portfolioTags": ["ml", "backend", "data"],
+    "demoUrl": "",
+    "repoUrl": "https://github.com/meet989898/SIMBA",
+    "metrics": ["Large search space", "Ranking evaluation", "Interactive querying"],
     "resumeBullets": [
-      "Built a large-scale similarity search system for chess positions using FAISS and evaluation-aware embeddings."
-    ]
+      "Built a large-scale similarity search system for chess positions using indexed retrieval and evaluation-aware representations."
+    ],
+    "visual": {
+      "src": "/visuals/simba-concept.svg",
+      "alt": "Concept visual showing a chessboard connected to search and ranking signals",
+      "type": "concept",
+      "caption": "Concept visual; live demo screenshots will replace this as the project UI matures."
+    },
+    "caseStudy": {
+      "problem": "Chess positions create a high-dimensional comparison problem where exact matches are less useful than strategically similar examples.",
+      "approach": [
+        "Represent board states with features that preserve useful decision context.",
+        "Index the search space for fast nearest-neighbor retrieval.",
+        "Evaluate retrieved positions with ranking metrics and qualitative chess relevance."
+      ],
+      "outcome": [
+        "Shows algorithmic thinking across representation, retrieval, ranking, and service design.",
+        "Creates a foundation for a public demo where users can query positions and inspect similar results."
+      ]
+    }
   },
   {
     "title": "Pharmacy Document Intelligence",
     "slug": "pharmacy-doc-intelligence",
-    "subtitle": "Public-safe rebuild in progress",
-    "cardStatus": "Next project",
-    "summary": "Public-safe ML system for semantic retrieval and document decision support.",
-    "roleSignals": ["ML engineer", "AI engineer", "backend engineer"],
+    "subtitle": "Document search and decision support",
+    "cardStatus": "Building",
+    "status": "building",
+    "statusLabel": "Building",
+    "featuredOrder": 1,
+    "summary": "A public-safe document intelligence project for searching, ranking, and explaining information across manufacturing-style documents.",
+    "longSummary": "This project turns a resume experience into a public, safe, and inspectable product demo. The goal is to show how document-heavy workflows can be transformed into search, evidence review, and decision-support interfaces without exposing private or proprietary data.",
+    "roleSignals": ["AI engineering", "Backend engineering", "Product systems"],
     "techStack": ["Python", "Transformers", "FastAPI", "Docker", "AWS"],
-    "portfolioTags": ["ml", "retrieval", "backend"],
-    "demoUrl": "#timeline",
+    "portfolioTags": ["ai", "ml", "backend", "data"],
+    "demoUrl": "",
     "repoUrl": "",
-    "status": "planned",
-    "metrics": ["hybrid retrieval", "semantic reranking", "public-safe synthetic data"],
+    "metrics": ["Semantic retrieval", "Evidence review", "Public-safe data"],
     "resumeBullets": [
       "Built a transformer-based document intelligence system with retrieval, reranking, and deployable API workflows."
-    ]
+    ],
+    "visual": {
+      "src": "/visuals/pharmacy-docs-concept.svg",
+      "alt": "Concept visual showing documents, highlighted evidence, and an intelligence workflow",
+      "type": "concept",
+      "caption": "Generated concept visual for the planned public-safe rebuild."
+    },
+    "caseStudy": {
+      "problem": "Document-heavy operations need fast, trustworthy ways to find evidence and make decisions without losing context.",
+      "approach": [
+        "Use synthetic public-safe documents to avoid confidential data exposure.",
+        "Combine search, ranking, and evidence panels into a product-style demo.",
+        "Keep the backend deployable, testable, and easy to inspect."
+      ],
+      "outcome": [
+        "Will demonstrate AI, backend, data, and UX skills in one recruiter-friendly demo.",
+        "Will produce a strong case study with architecture, metrics, tests, and screenshots."
+      ]
+    }
   },
   {
     "title": "Poker Behavior Modeling",
     "slug": "poker-behavior-modeling",
-    "subtitle": "Predictive strategy analytics",
-    "cardStatus": "Planned upgrade",
-    "summary": "A modeling and visualization system for poker action prediction, player behavior features, calibration, simulation, and interactive decision analysis.",
-    "roleSignals": ["ML engineer", "data systems", "backend engineer"],
-    "techStack": ["Python", "Pandas", "Scikit-learn", "Visualization"],
-    "portfolioTags": ["ml", "data", "backend"],
-    "demoUrl": "#timeline",
-    "repoUrl": "https://github.com/meet989898/Poker-Stats",
+    "subtitle": "Predictive analytics for game decisions",
+    "cardStatus": "Upcoming upgrade",
     "status": "planned",
-    "metrics": ["behavior features", "action prediction", "interactive dashboard"],
+    "statusLabel": "Upcoming",
+    "featuredOrder": 2,
+    "summary": "A modeling and visualization system for predicting player actions, analyzing behavior patterns, and explaining strategy signals.",
+    "longSummary": "The upgraded project will frame predictive modeling as a usable analysis product: structured data pipelines, model evaluation, scenario exploration, and visual explanations for how player behavior changes across game contexts.",
+    "roleSignals": ["Machine learning", "Data analysis", "Frontend visualization"],
+    "techStack": ["Python", "PyTorch", "Pandas", "Visualization"],
+    "portfolioTags": ["ml", "data", "frontend"],
+    "demoUrl": "",
+    "repoUrl": "https://github.com/meet989898/Poker-Stats",
+    "metrics": ["Behavior features", "Action prediction", "Interactive dashboard"],
     "resumeBullets": [
       "Modeled poker action patterns with feature engineering, predictive workflows, and decision-analysis visuals."
-    ]
+    ],
+    "visual": {
+      "src": "/visuals/poker-modeling-concept.svg",
+      "alt": "Concept visual showing playing cards, prediction curves, and behavior clusters",
+      "type": "concept",
+      "caption": "Generated concept visual for the planned dashboard upgrade."
+    },
+    "caseStudy": {
+      "problem": "Game logs are noisy, sequential, and difficult to interpret without feature engineering and visual feedback.",
+      "approach": [
+        "Build clean features from game histories and player actions.",
+        "Compare predictive models with transparent evaluation.",
+        "Add dashboard controls that explain scenarios without requiring notebook reading."
+      ],
+      "outcome": [
+        "Will broaden the portfolio with predictive analytics and interactive visualization.",
+        "Will create a clear data-science-to-product story for mainstream CS roles."
+      ]
+    }
   },
   {
     "title": "Augmented KGE Research",
     "slug": "augmented-kge-research",
-    "subtitle": "Knowledge graph embedding evaluation",
-    "cardStatus": "Research signal",
-    "summary": "Research pipeline for knowledge graph embeddings, negative sampling, link prediction, and IR-style relevance metrics.",
-    "roleSignals": ["ML engineer", "research engineer", "data systems"],
-    "techStack": ["PyTorch", "Knowledge Graph Embeddings", "Python", "Evaluation"],
-    "portfolioTags": ["ml", "retrieval", "data"],
-    "demoUrl": "#systems",
-    "repoUrl": "https://github.com/meet989898/Augmented_KGE_meet",
+    "subtitle": "Knowledge graph evaluation research",
+    "cardStatus": "Research repository",
     "status": "research",
-    "metrics": ["KGE models", "IR metrics", "PyTorch pipelines"],
+    "statusLabel": "Research",
+    "featuredOrder": 3,
+    "summary": "A research pipeline for knowledge graph embeddings, link prediction, negative sampling, and retrieval-style evaluation.",
+    "longSummary": "This work gives the portfolio a research signal: experimental design, model evaluation, ranking metrics, and reproducible machine-learning workflows. The future public-facing version should make the evaluation story easier to scan and understand.",
+    "roleSignals": ["Research engineering", "Machine learning", "Data systems"],
+    "techStack": ["PyTorch", "Python", "Knowledge Graphs", "Evaluation"],
+    "portfolioTags": ["research", "ml", "data"],
+    "demoUrl": "",
+    "repoUrl": "https://github.com/meet989898/Augmented_KGE_meet",
+    "metrics": ["Link prediction", "Ranking metrics", "Reproducible experiments"],
     "resumeBullets": [
       "Built and evaluated knowledge graph embedding experiments with link-prediction metrics and reproducible PyTorch pipelines."
-    ]
+    ],
+    "visual": {
+      "src": "/visuals/kge-research-concept.svg",
+      "alt": "Concept visual showing a knowledge graph with ranking and evaluation signals",
+      "type": "concept",
+      "caption": "Concept visual for the research workflow."
+    },
+    "caseStudy": {
+      "problem": "Knowledge graph models need careful sampling and ranking evaluation to make research results meaningful.",
+      "approach": [
+        "Develop model experiments with negative sampling strategies.",
+        "Evaluate link prediction using ranking-focused metrics.",
+        "Optimize data-processing workflows for faster experimentation."
+      ],
+      "outcome": [
+        "Shows research fluency alongside practical engineering implementation.",
+        "Creates a bridge between AI research, data pipelines, and measurable evaluation."
+      ]
+    }
   }
 ]

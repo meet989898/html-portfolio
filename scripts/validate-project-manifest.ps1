@@ -44,20 +44,28 @@ function Assert-OptionalUrl([string]$Value, [string]$PropertyName, [string]$Proj
   }
 }
 
-$allowedStatuses = @("live", "planned", "research")
-$allowedPortfolioTags = @("ml", "retrieval", "backend", "data")
+$allowedStatuses = @("live", "building", "planned", "research")
+$allowedPortfolioTags = @("ai", "ml", "data", "backend", "frontend", "research")
+$allowedVisualTypes = @("concept", "screenshot")
 $requiredProperties = @(
   "title",
   "slug",
+  "subtitle",
+  "cardStatus",
+  "status",
+  "statusLabel",
+  "featuredOrder",
   "summary",
+  "longSummary",
   "roleSignals",
   "techStack",
   "portfolioTags",
   "demoUrl",
   "repoUrl",
-  "status",
   "metrics",
-  "resumeBullets"
+  "resumeBullets",
+  "visual",
+  "caseStudy"
 )
 
 $schema = Get-Content $SchemaPath -Raw | ConvertFrom-Json
@@ -102,6 +110,26 @@ foreach ($project in $projectList) {
     Fail "$($project.title): 'summary' must not be empty."
   }
 
+  if ([string]::IsNullOrWhiteSpace($project.longSummary)) {
+    Fail "$($project.title): 'longSummary' must not be empty."
+  }
+
+  if ([string]::IsNullOrWhiteSpace($project.subtitle)) {
+    Fail "$($project.title): 'subtitle' must not be empty."
+  }
+
+  if ([string]::IsNullOrWhiteSpace($project.cardStatus)) {
+    Fail "$($project.title): 'cardStatus' must not be empty."
+  }
+
+  if ([string]::IsNullOrWhiteSpace($project.statusLabel)) {
+    Fail "$($project.title): 'statusLabel' must not be empty."
+  }
+
+  if ($project.featuredOrder -isnot [int] -and $project.featuredOrder -isnot [long]) {
+    Fail "$($project.title): 'featuredOrder' must be an integer."
+  }
+
   $null = Assert-StringArray $project.roleSignals "roleSignals" $project.title
   $null = Assert-StringArray $project.techStack "techStack" $project.title
   $portfolioTags = Assert-StringArray $project.portfolioTags "portfolioTags" $project.title
@@ -120,6 +148,27 @@ foreach ($project in $projectList) {
 
   Assert-OptionalUrl $project.demoUrl "demoUrl" $project.title
   Assert-OptionalUrl $project.repoUrl "repoUrl" $project.title
+
+  if ($null -eq $project.visual) {
+    Fail "$($project.title): 'visual' must be present."
+  }
+  foreach ($property in @("src", "alt", "type", "caption")) {
+    if (-not ($project.visual.PSObject.Properties.Name -contains $property) -or [string]::IsNullOrWhiteSpace($project.visual.$property)) {
+      Fail "$($project.title): visual '$property' must not be empty."
+    }
+  }
+  if ($project.visual.type -notin $allowedVisualTypes) {
+    Fail "$($project.title): unsupported visual type '$($project.visual.type)'."
+  }
+
+  if ($null -eq $project.caseStudy) {
+    Fail "$($project.title): 'caseStudy' must be present."
+  }
+  if ([string]::IsNullOrWhiteSpace($project.caseStudy.problem)) {
+    Fail "$($project.title): caseStudy 'problem' must not be empty."
+  }
+  $null = Assert-StringArray $project.caseStudy.approach "caseStudy.approach" $project.title
+  $null = Assert-StringArray $project.caseStudy.outcome "caseStudy.outcome" $project.title
 }
 
 Write-Output "Validated $($projectList.Count) portfolio projects against $SchemaPath."

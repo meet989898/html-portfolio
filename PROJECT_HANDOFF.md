@@ -1,119 +1,123 @@
-# Meet Gandhi Portfolio Handoff
+# Meet Gandhi Portfolio Redesign Handoff
 
 ## What Was Built
 
-This repository is the first version of the public portfolio for `meetgandhi.com`. It replaces the old starter HTML portfolio with a modern ML systems portfolio designed for SWE, ML/AI, backend, and data-systems applications.
+The portfolio was rebuilt from a static HTML/CSS/JS page into a polished Next.js application for `meetgandhi.com`.
 
-The site includes:
+The new site is intentionally broader and more standalone. The homepage now presents Meet Gandhi as a software engineer across AI, data, backend, full-stack, and research work instead of leading with narrow tool names or internal project-planning language.
 
-- A dynamic hero with an animated signal-field canvas.
-- Project cards for SIMBA, Pharmacy Document Intelligence, Poker Behavior Modeling, and Augmented KGE Research.
-- Filter controls for ML, retrieval, backend, and data projects.
-- A project manifest system in `data/projects.json`.
-- A schema in `portfolio.schema.json` to standardize future project metadata.
-- A printable web resume at `resume.html`.
-- A local validation script for project metadata.
-- Vercel deployment configuration.
-- Codex automations for ongoing maintenance and three-day project planning.
+Public routes:
+
+- `/`: main portfolio homepage
+- `/projects/[slug]`: project case-study pages
+- `/resume`: web resume
+- `/api/contact`: contact form endpoint
 
 ## Tech Stack
 
-- **HTML**: Page structure, semantic sections, navigation, resume page, and project content.
-- **CSS**: Responsive layout, dark technical-cinematic visual system, animated tiles, pipeline graphics, print styles, and mobile rules.
-- **JavaScript**: Project rendering, filtering, manifest hydration, animated counters, reduced-motion handling, and canvas animation.
-- **JSON**: `data/projects.json` stores structured project metadata.
-- **JSON Schema**: `portfolio.schema.json` defines the required shape for project metadata.
-- **PowerShell**: `scripts/validate-project-manifest.ps1` validates project entries without requiring Node packages.
-- **GitHub**: Source control and automatic deployment source.
-- **Vercel**: Hosting target for the production portfolio and custom domains.
+- **Next.js App Router**: routing, static generation, API route, Vercel deployment fit.
+- **TypeScript**: safer component props, route data, and content handling.
+- **Tailwind CSS**: responsive layout and visual styling.
+- **shadcn/ui**: owned UI primitives such as buttons, badges, cards, tabs, inputs, and textarea.
+- **Framer Motion**: section entrance motion.
+- **React Three Fiber / Three.js**: interactive 3D hero accent.
+- **Zod**: typed project manifest validation during build.
+- **Resend**: planned production email delivery for the contact form.
+- **Playwright Core**: local browser smoke verification.
 
-## Why This Stack
+## Important Design Choices
 
-The first version is intentionally dependency-light. A static site is fast, easy to host, reliable on Vercel Hobby, and simple enough for you to understand fully. Once the project cadence is stable, we can upgrade to Next.js or a richer framework if the portfolio needs server-rendered GitHub discovery, API routes, analytics, or more advanced project pages.
+- The hero copy is broad and simple: `Meet Gandhi` plus a general software-engineering positioning line.
+- Specific tools like FAISS, FastAPI, PyTorch, Docker, and AWS are kept inside project pages and the tech stack section.
+- The portfolio website is not listed as a project.
+- Internal cadence/planning sections were removed from the public site.
+- Projects can be `Live`, `Building`, `Upcoming`, or `Research`, but concept visuals are clearly labeled so they are not mistaken for live screenshots.
+- The visual system uses a premium warm editorial base, dark product sections, generated SVG project media, and a small 3D hero scene.
 
 ## Important Files
 
-- `index.html`: Main portfolio page.
-- `styles.css`: Visual design, responsive layout, animation, and print styles.
-- `script.js`: Dynamic project rendering, filters, counters, and background animation.
-- `resume.html`: Web resume snapshot with print/save support.
-- `data/projects.json`: Current portfolio project manifest.
-- `portfolio.schema.json`: Manifest schema for future projects.
-- `scripts/validate-project-manifest.ps1`: Local validation script.
-- `scripts/serve-static.js`: Local static preview server.
-- `scripts/verify-portfolio.js`: Browser smoke test for desktop and mobile.
-- `vercel.json`: Vercel routing/header configuration.
+- `src/app/page.tsx`: homepage.
+- `src/app/projects/[slug]/page.tsx`: project case-study route.
+- `src/app/resume/page.tsx`: web resume route.
+- `src/app/api/contact/route.ts`: contact form API route.
+- `src/lib/projects.ts`: Zod schema and project manifest loading.
+- `src/lib/profile.ts`: profile, experience, education, and stack content.
+- `data/projects.json`: canonical project data.
+- `public/visuals/`: generated project concept visuals.
+- `scripts/verify-portfolio.mjs`: browser smoke test.
+- `portfolio.schema.json`: JSON schema companion for project data.
 
-## How To Run Locally
-
-From the repository root:
+## How To Run
 
 ```powershell
-& "C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" scripts/serve-static.js
+npm install
+npm run dev
 ```
 
-Then open:
+Open:
 
 ```text
-http://localhost:4173
+http://127.0.0.1:3000
 ```
 
 ## How To Validate
 
-Validate the project manifest:
-
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\validate-project-manifest.ps1
+npm run validate:projects
+npm run lint
+npm run build
 ```
 
-Run the browser smoke test:
+For browser verification:
 
 ```powershell
-$env:NODE_PATH="C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules;C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\.pnpm\playwright-core@1.60.0\node_modules"
-& "C:\Users\gandh\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" scripts/verify-portfolio.js
+npm run build
+npm run start -- --hostname 127.0.0.1 --port 3000
+npm run verify
 ```
 
-The verifier checks that manifest-backed cards render, each filter returns the expected visible-card count, the live status text updates correctly, and desktop/mobile screenshots are still captured.
+The verifier checks desktop and mobile rendering, homepage copy, project cards, visual labels, every project route, the resume route, and contact-form required-field validation.
+
+## Contact Form Setup
+
+The contact form is implemented, but production sending needs Resend environment variables in Vercel:
+
+```text
+RESEND_API_KEY
+CONTACT_TO_EMAIL=gandhi.meet.mg@gmail.com
+CONTACT_FROM_EMAIL=Portfolio <hello@meetgandhi.com>
+```
+
+Resend may require domain verification for `meetgandhi.com` before `hello@meetgandhi.com` can send mail. Direct email links remain visible even before that setup is complete.
 
 ## Deployment Notes
 
-The GitHub repository is:
+Repository:
 
 ```text
 https://github.com/meet989898/html-portfolio
 ```
 
-The intended Vercel setup is:
+Production domains:
 
-- Primary domain: `meetgandhi.com`
-- Redirect domain: `meetgandhi.dev`
-- Production branch: `main`
+```text
+https://www.meetgandhi.com
+https://meetgandhi.com
+https://meetgandhi.dev
+```
 
-Every push to `main` should trigger a production deployment once the Vercel project is connected.
+Vercel should auto-detect the Next.js app and deploy every push to `main`.
 
 ## Future Project Pattern
 
-Every new resume-worthy project should include:
+Every resume-worthy project should include:
 
-- A live demo.
-- A GitHub repository.
-- A README with architecture, metrics, and screenshots.
-- Tests and verification steps.
-- Public-safe data or synthetic data generation.
-- A root-level `portfolio.json` compatible with the portfolio schema.
-- A project-specific handoff markdown file explaining what was built and how to learn the stack.
+- live demo
+- GitHub repository
+- screenshots or generated concept visuals
+- `portfolio.json` or compatible project metadata
+- README with architecture and metrics
+- tests and verification steps
+- project-specific handoff markdown explaining the stack
 
-## Automation Policy
-
-Daily commits should be meaningful. Acceptable maintenance includes:
-
-- Documentation improvements.
-- Tests.
-- Benchmark refreshes.
-- Accessibility fixes.
-- UI/demo polish.
-- Model cards.
-- Project metadata updates.
-- Real bug fixes.
-
-Avoid empty churn, timestamp-only commits, fake changes, or meaningless formatting-only commits.
+When demos become live, replace concept visuals in `public/visuals/` with real Playwright screenshots or clearly labeled generated images based on those screenshots.

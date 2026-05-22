@@ -1,4 +1,9 @@
 portfolio-*.png
 .vercel/
+.next/
+out/
 node_modules/
+.env*
+!.env.example
+NEXT_PROJECT_PROPOSAL.md
 .DS_Store

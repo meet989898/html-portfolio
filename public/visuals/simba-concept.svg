@@ -1,0 +1,51 @@
+<svg width="1152" height="720" viewBox="0 0 1152 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1152" height="720" fill="#F7F3EA"/>
+  <rect x="72" y="68" width="468" height="468" rx="32" fill="#101112"/>
+  <g transform="translate(108 104)">
+    <rect width="396" height="396" rx="18" fill="#F7F3EA"/>
+    <g opacity=".96">
+      <rect width="49.5" height="49.5" fill="#F6C85F"/>
+      <rect x="99" width="49.5" height="49.5" fill="#50C8FF"/>
+      <rect x="198" width="49.5" height="49.5" fill="#F6C85F"/>
+      <rect x="297" width="49.5" height="49.5" fill="#50C8FF"/>
+      <rect x="49.5" y="49.5" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="148.5" y="49.5" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="247.5" y="49.5" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="346.5" y="49.5" width="49.5" height="49.5" fill="#101112"/>
+      <rect y="99" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="99" y="99" width="49.5" height="49.5" fill="#FF6B78"/>
+      <rect x="198" y="99" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="297" y="99" width="49.5" height="49.5" fill="#9DF27F"/>
+      <rect x="49.5" y="148.5" width="49.5" height="49.5" fill="#50C8FF"/>
+      <rect x="148.5" y="148.5" width="49.5" height="49.5" fill="#F6C85F"/>
+      <rect x="247.5" y="148.5" width="49.5" height="49.5" fill="#50C8FF"/>
+      <rect x="346.5" y="148.5" width="49.5" height="49.5" fill="#F6C85F"/>
+      <rect y="198" width="49.5" height="49.5" fill="#F6C85F"/>
+      <rect x="99" y="198" width="49.5" height="49.5" fill="#50C8FF"/>
+      <rect x="198" y="198" width="49.5" height="49.5" fill="#F6C85F"/>
+      <rect x="297" y="198" width="49.5" height="49.5" fill="#50C8FF"/>
+      <rect x="49.5" y="247.5" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="148.5" y="247.5" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="247.5" y="247.5" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="346.5" y="247.5" width="49.5" height="49.5" fill="#101112"/>
+      <rect y="297" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="99" y="297" width="49.5" height="49.5" fill="#9DF27F"/>
+      <rect x="198" y="297" width="49.5" height="49.5" fill="#101112"/>
+      <rect x="297" y="297" width="49.5" height="49.5" fill="#FF6B78"/>
+      <rect x="49.5" y="346.5" width="49.5" height="49.5" fill="#50C8FF"/>
+      <rect x="148.5" y="346.5" width="49.5" height="49.5" fill="#F6C85F"/>
+      <rect x="247.5" y="346.5" width="49.5" height="49.5" fill="#50C8FF"/>
+      <rect x="346.5" y="346.5" width="49.5" height="49.5" fill="#F6C85F"/>
+    </g>
+  </g>
+  <path d="M575 240C662 204 725 206 796 262C862 314 920 317 1012 274" stroke="#50C8FF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M575 363C676 304 750 340 825 397C881 440 942 453 1038 392" stroke="#D65A31" stroke-width="8" stroke-linecap="round"/>
+  <path d="M575 475C642 424 742 423 824 471C902 517 967 523 1040 489" stroke="#9DF27F" stroke-width="8" stroke-linecap="round"/>
+  <g font-family="Geist, Arial, sans-serif" font-weight="700">
+    <text x="610" y="164" fill="#101112" font-size="34">Similarity Search</text>
+    <text x="610" y="205" fill="#101112" fill-opacity=".58" font-size="22">query → candidates → ranked context</text>
+  </g>
+  <circle cx="792" cy="262" r="20" fill="#101112"/>
+  <circle cx="825" cy="397" r="20" fill="#101112"/>
+  <circle cx="824" cy="471" r="20" fill="#101112"/>
+</svg>

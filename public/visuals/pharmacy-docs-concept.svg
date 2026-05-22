@@ -1,0 +1,27 @@
+<svg width="1152" height="720" viewBox="0 0 1152 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1152" height="720" fill="#F7F3EA"/>
+  <rect x="78" y="86" width="340" height="478" rx="30" fill="#FFFFFF" stroke="#101112" stroke-opacity=".14" stroke-width="3"/>
+  <rect x="126" y="148" width="185" height="16" rx="8" fill="#101112"/>
+  <rect x="126" y="204" width="240" height="12" rx="6" fill="#101112" fill-opacity=".18"/>
+  <rect x="126" y="242" width="198" height="12" rx="6" fill="#101112" fill-opacity=".18"/>
+  <rect x="126" y="280" width="252" height="12" rx="6" fill="#101112" fill-opacity=".18"/>
+  <rect x="126" y="338" width="214" height="54" rx="14" fill="#9DF27F"/>
+  <rect x="126" y="420" width="246" height="12" rx="6" fill="#101112" fill-opacity=".18"/>
+  <rect x="126" y="456" width="166" height="12" rx="6" fill="#101112" fill-opacity=".18"/>
+  <rect x="498" y="126" width="452" height="116" rx="28" fill="#101112"/>
+  <rect x="538" y="166" width="268" height="17" rx="8.5" fill="#F7F3EA"/>
+  <rect x="538" y="199" width="190" height="11" rx="5.5" fill="#F7F3EA" fill-opacity=".55"/>
+  <rect x="498" y="306" width="452" height="116" rx="28" fill="#50C8FF"/>
+  <rect x="538" y="346" width="312" height="17" rx="8.5" fill="#101112"/>
+  <rect x="538" y="379" width="208" height="11" rx="5.5" fill="#101112" fill-opacity=".55"/>
+  <rect x="498" y="486" width="452" height="116" rx="28" fill="#F6C85F"/>
+  <rect x="538" y="526" width="250" height="17" rx="8.5" fill="#101112"/>
+  <rect x="538" y="559" width="304" height="11" rx="5.5" fill="#101112" fill-opacity=".55"/>
+  <path d="M418 365C461 365 468 184 498 184" stroke="#D65A31" stroke-width="7" stroke-linecap="round"/>
+  <path d="M418 365C461 365 468 364 498 364" stroke="#101112" stroke-opacity=".45" stroke-width="7" stroke-linecap="round"/>
+  <path d="M418 365C461 365 468 544 498 544" stroke="#9DF27F" stroke-width="7" stroke-linecap="round"/>
+  <g font-family="Geist, Arial, sans-serif" font-weight="700">
+    <text x="84" y="642" fill="#101112" font-size="31">Evidence-first document intelligence</text>
+    <text x="84" y="679" fill="#101112" fill-opacity=".58" font-size="20">search, rank, inspect, decide</text>
+  </g>
+</svg>
