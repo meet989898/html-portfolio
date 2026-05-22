@@ -1,4 +1,4 @@
-const projects = [
+const fallbackProjects = [
   {
     title: "SIMBA",
     subtitle: "Scalable Similarity Search Benchmarking Architecture",
@@ -47,8 +47,14 @@ const projects = [
 
 const grid = document.querySelector("#project-grid");
 const filters = document.querySelectorAll(".filter");
+const status = document.querySelector("#project-status");
+const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+let projects = fallbackProjects;
 
 function renderProjects(filter = "all") {
+  const visibleCount = projects.filter((project) => filter === "all" || project.tags.includes(filter)).length;
+
   grid.innerHTML = projects
     .map((project) => {
       const hidden = filter !== "all" && !project.tags.includes(filter);
@@ -56,7 +62,11 @@ function renderProjects(filter = "all") {
       const metrics = project.metrics.map((metric) => `<span class="tag">${metric}</span>`).join("");
 
       return `
-        <article class="project-card${hidden ? " hidden" : ""}" data-tags="${project.tags.join(" ")}">
+        <article
+          class="project-card${hidden ? " hidden" : ""}"
+          data-tags="${project.tags.join(" ")}"
+          ${hidden ? 'aria-hidden="true"' : ""}
+        >
           <header>
             <p class="project-meta">${project.status}</p>
             <h3>${project.title}</h3>
@@ -73,23 +83,78 @@ function renderProjects(filter = "all") {
       `;
     })
     .join("");
+
+  status.textContent =
+    filter === "all"
+      ? `Showing all ${visibleCount} projects.`
+      : `Showing ${visibleCount} ${filter} project${visibleCount === 1 ? "" : "s"}.`;
+}
+
+function mapManifestProject(project) {
+  return {
+    title: project.title,
+    subtitle: project.subtitle || project.cardStatus || project.status,
+    summary: project.summary,
+    status: project.cardStatus || project.status,
+    tags: Array.isArray(project.portfolioTags) && project.portfolioTags.length ? project.portfolioTags : ["ml"],
+    metrics: project.metrics,
+    repo: project.repoUrl || "#timeline",
+    demo: project.demoUrl || "#timeline"
+  };
+}
+
+async function hydrateProjects() {
+  if (window.location.protocol === "file:") {
+    renderProjects();
+    return;
+  }
+
+  try {
+    const response = await fetch("./data/projects.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`Project manifest request failed with ${response.status}`);
+
+    const manifestProjects = await response.json();
+    if (!Array.isArray(manifestProjects) || manifestProjects.length === 0) {
+      throw new Error("Project manifest payload was empty.");
+    }
+
+    projects = manifestProjects.map(mapManifestProject);
+  } catch (error) {
+    console.warn("Falling back to bundled project cards.", error);
+    projects = fallbackProjects;
+  }
+
+  renderProjects();
 }
 
 filters.forEach((button) => {
   button.addEventListener("click", () => {
-    filters.forEach((item) => item.classList.remove("active"));
+    filters.forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-pressed", "false");
+    });
     button.classList.add("active");
+    button.setAttribute("aria-pressed", "true");
     renderProjects(button.dataset.filter);
   });
 });
 
-renderProjects();
+hydrateProjects();
 
 const canvas = document.querySelector("#signal-field");
 const ctx = canvas.getContext("2d");
 let width;
 let height;
 let nodes;
+let animationFrameId = 0;
+
+function stopAnimation() {
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = 0;
+  }
+  ctx.clearRect(0, 0, width, height);
+}
 
 function resize() {
   width = canvas.width = window.innerWidth * window.devicePixelRatio;
@@ -108,6 +173,8 @@ function resize() {
 }
 
 function tick() {
+  if (reduceMotionQuery.matches) return;
+
   ctx.clearRect(0, 0, width, height);
   ctx.fillStyle = "rgba(79, 209, 197, 0.78)";
   ctx.strokeStyle = "rgba(246, 200, 95, 0.16)";
@@ -142,9 +209,22 @@ function tick() {
     }
   }
 
-  requestAnimationFrame(tick);
+  animationFrameId = requestAnimationFrame(tick);
 }
 
-window.addEventListener("resize", resize);
 resize();
-tick();
+window.addEventListener("resize", resize);
+
+function syncMotionPreference() {
+  if (reduceMotionQuery.matches) {
+    canvas.setAttribute("data-motion", "reduced");
+    stopAnimation();
+    return;
+  }
+
+  canvas.removeAttribute("data-motion");
+  if (!animationFrameId) tick();
+}
+
+syncMotionPreference();
+reduceMotionQuery.addEventListener("change", syncMotionPreference);

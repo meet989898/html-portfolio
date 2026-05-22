@@ -9,10 +9,17 @@
     />
     <title>Meet Gandhi | ML Systems Portfolio</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://api.github.com" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#top">Skip to content</a>
     <canvas id="signal-field" aria-hidden="true"></canvas>
 
     <header class="site-header">
@@ -64,13 +71,118 @@
           <h2>Portfolio projects with live demos, metrics, and case-study depth.</h2>
         </div>
         <div class="toolbar" aria-label="Project filters">
-          <button class="filter active" data-filter="all" type="button">All</button>
-          <button class="filter" data-filter="ml" type="button">ML</button>
-          <button class="filter" data-filter="retrieval" type="button">Retrieval</button>
-          <button class="filter" data-filter="backend" type="button">Backend</button>
-          <button class="filter" data-filter="data" type="button">Data</button>
+          <button class="filter active" data-filter="all" type="button" aria-controls="project-grid" aria-pressed="true">All</button>
+          <button class="filter" data-filter="ml" type="button" aria-controls="project-grid" aria-pressed="false">ML</button>
+          <button class="filter" data-filter="retrieval" type="button" aria-controls="project-grid" aria-pressed="false">Retrieval</button>
+          <button class="filter" data-filter="backend" type="button" aria-controls="project-grid" aria-pressed="false">Backend</button>
+          <button class="filter" data-filter="data" type="button" aria-controls="project-grid" aria-pressed="false">Data</button>
         </div>
-        <div class="project-grid" id="project-grid" aria-live="polite"></div>
+        <p class="project-status" id="project-status" role="status" aria-live="polite"></p>
+        <div class="project-grid" id="project-grid" aria-live="polite">
+          <noscript>
+            <article class="project-card">
+              <header>
+                <p class="project-meta">Live GitHub project</p>
+                <h3>SIMBA</h3>
+                <p>Scalable Similarity Search Benchmarking Architecture</p>
+              </header>
+              <p>
+                A chess decision-space retrieval system using FAISS-style nearest-neighbor search,
+                evaluation-aware embeddings, and systems benchmarks for large position corpora.
+              </p>
+              <div class="tag-row" aria-label="Project tags">
+                <span class="tag">ml</span>
+                <span class="tag">retrieval</span>
+                <span class="tag">backend</span>
+                <span class="tag">data</span>
+              </div>
+              <div class="tag-row" aria-label="Project metrics">
+                <span class="tag">10M position target</span>
+                <span class="tag">Sub-second retrieval goal</span>
+                <span class="tag">Ranking evaluation</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/meet989898/SIMBA">Repository</a>
+                <a href="#timeline">Demo</a>
+              </div>
+            </article>
+            <article class="project-card">
+              <header>
+                <p class="project-meta">Next project</p>
+                <h3>Pharmacy Document Intelligence</h3>
+                <p>Public-safe rebuild in progress</p>
+              </header>
+              <p>
+                A synthetic-document ML platform for semantic search, hybrid retrieval, reranking,
+                explainable evidence views, and production-style FastAPI workflows.
+              </p>
+              <div class="tag-row" aria-label="Project tags">
+                <span class="tag">ml</span>
+                <span class="tag">retrieval</span>
+                <span class="tag">backend</span>
+              </div>
+              <div class="tag-row" aria-label="Project metrics">
+                <span class="tag">Transformer retrieval</span>
+                <span class="tag">Hybrid ranking</span>
+                <span class="tag">Docker + CI</span>
+              </div>
+              <div class="project-links">
+                <a href="#timeline">Repository</a>
+                <a href="#timeline">Demo</a>
+              </div>
+            </article>
+            <article class="project-card">
+              <header>
+                <p class="project-meta">Planned upgrade</p>
+                <h3>Poker Behavior Modeling</h3>
+                <p>Predictive strategy analytics</p>
+              </header>
+              <p>
+                A modeling and visualization system for poker action prediction, player behavior
+                features, calibration, simulation, and interactive decision analysis.
+              </p>
+              <div class="tag-row" aria-label="Project tags">
+                <span class="tag">ml</span>
+                <span class="tag">data</span>
+                <span class="tag">backend</span>
+              </div>
+              <div class="tag-row" aria-label="Project metrics">
+                <span class="tag">Behavior features</span>
+                <span class="tag">Action prediction</span>
+                <span class="tag">Interactive dashboard</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/meet989898/Poker-Stats">Repository</a>
+                <a href="#timeline">Demo</a>
+              </div>
+            </article>
+            <article class="project-card">
+              <header>
+                <p class="project-meta">Research signal</p>
+                <h3>Augmented KGE Research</h3>
+                <p>Knowledge graph embedding evaluation</p>
+              </header>
+              <p>
+                Research pipeline for knowledge graph embeddings, negative sampling, link prediction,
+                and IR-style relevance metrics including MRR, Hits@K, nDCG, and MAP.
+              </p>
+              <div class="tag-row" aria-label="Project tags">
+                <span class="tag">ml</span>
+                <span class="tag">retrieval</span>
+                <span class="tag">data</span>
+              </div>
+              <div class="tag-row" aria-label="Project metrics">
+                <span class="tag">KGE models</span>
+                <span class="tag">IR metrics</span>
+                <span class="tag">PyTorch pipelines</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/meet989898/Augmented_KGE_meet">Repository</a>
+                <a href="#systems">Demo</a>
+              </div>
+            </article>
+          </noscript>
+        </div>
       </section>
 
       <section class="systems" id="systems">

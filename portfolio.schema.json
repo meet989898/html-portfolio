@@ -1,30 +1,74 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Meet Gandhi Portfolio Project Manifest",
-  "type": "object",
-  "required": [
-    "title",
-    "slug",
-    "summary",
-    "roleSignals",
-    "techStack",
-    "demoUrl",
-    "repoUrl",
-    "status",
-    "metrics",
-    "resumeBullets"
-  ],
-  "properties": {
-    "title": { "type": "string" },
-    "slug": { "type": "string" },
-    "summary": { "type": "string" },
-    "roleSignals": { "type": "array", "items": { "type": "string" } },
-    "techStack": { "type": "array", "items": { "type": "string" } },
-    "demoUrl": { "type": "string" },
-    "repoUrl": { "type": "string" },
-    "status": { "type": "string" },
-    "metrics": { "type": "array", "items": { "type": "string" } },
-    "featuredAssets": { "type": "array", "items": { "type": "string" } },
-    "resumeBullets": { "type": "array", "items": { "type": "string" } }
+  "title": "Meet Gandhi Portfolio Project Manifest Collection",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "title",
+      "slug",
+      "summary",
+      "roleSignals",
+      "techStack",
+      "portfolioTags",
+      "demoUrl",
+      "repoUrl",
+      "status",
+      "metrics",
+      "resumeBullets"
+    ],
+    "properties": {
+      "title": { "type": "string", "minLength": 1 },
+      "slug": { "type": "string", "minLength": 1 },
+      "subtitle": { "type": "string" },
+      "cardStatus": { "type": "string" },
+      "summary": { "type": "string", "minLength": 1 },
+      "roleSignals": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "techStack": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "portfolioTags": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "enum": ["ml", "retrieval", "backend", "data"]
+        }
+      },
+      "demoUrl": {
+        "type": "string",
+        "pattern": "^(|https?://.+|#.+)$"
+      },
+      "repoUrl": {
+        "type": "string",
+        "pattern": "^(|https?://.+|#.+)$"
+      },
+      "status": {
+        "type": "string",
+        "enum": ["live", "planned", "research"]
+      },
+      "metrics": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "featuredAssets": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "resumeBullets": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "type": "string", "minLength": 1 }
+      }
+    },
+    "additionalProperties": false
   }
 }

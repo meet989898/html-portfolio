@@ -2,10 +2,13 @@
   {
     "title": "SIMBA",
     "slug": "simba",
+    "subtitle": "Scalable Similarity Search Benchmarking Architecture",
+    "cardStatus": "Live GitHub project",
     "summary": "Scalable similarity search architecture for chess decision spaces.",
     "roleSignals": ["ML engineer", "backend engineer", "data systems"],
     "techStack": ["Python", "FAISS", "PyTorch", "AWS"],
-    "demoUrl": "",
+    "portfolioTags": ["ml", "retrieval", "backend", "data"],
+    "demoUrl": "#timeline",
     "repoUrl": "https://github.com/meet989898/SIMBA",
     "status": "live",
     "metrics": ["10M position target", "sub-second retrieval goal", "ranking evaluation"],
@@ -16,15 +19,52 @@
   {
     "title": "Pharmacy Document Intelligence",
     "slug": "pharmacy-doc-intelligence",
+    "subtitle": "Public-safe rebuild in progress",
+    "cardStatus": "Next project",
     "summary": "Public-safe ML system for semantic retrieval and document decision support.",
     "roleSignals": ["ML engineer", "AI engineer", "backend engineer"],
     "techStack": ["Python", "Transformers", "FastAPI", "Docker", "AWS"],
-    "demoUrl": "",
+    "portfolioTags": ["ml", "retrieval", "backend"],
+    "demoUrl": "#timeline",
     "repoUrl": "",
     "status": "planned",
     "metrics": ["hybrid retrieval", "semantic reranking", "public-safe synthetic data"],
     "resumeBullets": [
       "Built a transformer-based document intelligence system with retrieval, reranking, and deployable API workflows."
+    ]
+  },
+  {
+    "title": "Poker Behavior Modeling",
+    "slug": "poker-behavior-modeling",
+    "subtitle": "Predictive strategy analytics",
+    "cardStatus": "Planned upgrade",
+    "summary": "A modeling and visualization system for poker action prediction, player behavior features, calibration, simulation, and interactive decision analysis.",
+    "roleSignals": ["ML engineer", "data systems", "backend engineer"],
+    "techStack": ["Python", "Pandas", "Scikit-learn", "Visualization"],
+    "portfolioTags": ["ml", "data", "backend"],
+    "demoUrl": "#timeline",
+    "repoUrl": "https://github.com/meet989898/Poker-Stats",
+    "status": "planned",
+    "metrics": ["behavior features", "action prediction", "interactive dashboard"],
+    "resumeBullets": [
+      "Modeled poker action patterns with feature engineering, predictive workflows, and decision-analysis visuals."
+    ]
+  },
+  {
+    "title": "Augmented KGE Research",
+    "slug": "augmented-kge-research",
+    "subtitle": "Knowledge graph embedding evaluation",
+    "cardStatus": "Research signal",
+    "summary": "Research pipeline for knowledge graph embeddings, negative sampling, link prediction, and IR-style relevance metrics.",
+    "roleSignals": ["ML engineer", "research engineer", "data systems"],
+    "techStack": ["PyTorch", "Knowledge Graph Embeddings", "Python", "Evaluation"],
+    "portfolioTags": ["ml", "retrieval", "data"],
+    "demoUrl": "#systems",
+    "repoUrl": "https://github.com/meet989898/Augmented_KGE_meet",
+    "status": "research",
+    "metrics": ["KGE models", "IR metrics", "PyTorch pipelines"],
+    "resumeBullets": [
+      "Built and evaluated knowledge graph embedding experiments with link-prediction metrics and reproducible PyTorch pipelines."
     ]
   }
 ]

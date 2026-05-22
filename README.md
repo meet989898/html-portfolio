@@ -20,7 +20,19 @@ The portfolio should be deployed on Vercel with:
 
 ## Project Manifest
 
+The portfolio site now treats `data/projects.json` as the primary source for project cards. `script.js` will fetch that manifest when served over HTTP(S) and will fall back to bundled cards when opened directly from `file://`.
+
 Every featured project should eventually include a root-level `portfolio.json` compatible with `portfolio.schema.json`. The portfolio will use those manifests to keep project cards, role signals, demos, and resume bullets current.
+
+### Validation
+
+Run the local PowerShell validator before publishing manifest changes:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\validate-project-manifest.ps1
+```
+
+This checks required fields, duplicate slugs, allowed filter tags, status values, and URL shape without requiring Node dependencies.
 
 ## Maintenance Policy
 
