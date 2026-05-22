@@ -20,6 +20,14 @@ function assert(condition, message) {
   }
 }
 
+async function assertNoMojibake(page, routeLabel) {
+  const bodyText = await page.locator("body").innerText();
+  const invalidFragments = ["Â", "Ã", "�"];
+  const detected = invalidFragments.filter((fragment) => bodyText.includes(fragment));
+  assert(detected.length === 0, `Unexpected mojibake detected on ${routeLabel}: ${detected.join(", ")}`);
+  return bodyText;
+}
+
 async function verifyHome(page) {
   await page.goto(baseUrl, { waitUntil: "networkidle" });
   await page.waitForSelector('[data-testid="hero-visual"]');
@@ -27,7 +35,7 @@ async function verifyHome(page) {
   const h1 = await page.locator("h1").first().innerText();
   assert(h1.trim() === "Meet Gandhi", `Unexpected homepage H1: ${h1}`);
 
-  const bodyText = await page.locator("body").innerText();
+  const bodyText = await assertNoMojibake(page, "home");
   assert(bodyText.includes("Software engineer building reliable products"), "Homepage broad positioning copy is missing.");
   assert(!bodyText.includes("production-minded AI projects"), "Old narrow hero copy is still visible.");
   assert(!bodyText.includes("new approved ML project every three days"), "Internal project cadence text is public.");
@@ -49,6 +57,7 @@ async function verifyRoutes(page) {
   for (const project of projects) {
     await page.goto(`${baseUrl}/projects/${project.slug}`, { waitUntil: "networkidle" });
     await page.waitForSelector("h1");
+    await assertNoMojibake(page, `/projects/${project.slug}`);
     const title = await page.locator("h1").first().innerText();
     assert(title.trim() === project.title, `Unexpected project title for ${project.slug}: ${title}`);
     await page.getByText(project.statusLabel).first().waitFor();
@@ -56,6 +65,7 @@ async function verifyRoutes(page) {
 
   await page.goto(`${baseUrl}/resume`, { waitUntil: "networkidle" });
   await page.waitForSelector("h1");
+  await assertNoMojibake(page, "/resume");
   const resumeTitle = await page.locator("h1").first().innerText();
   assert(resumeTitle.trim() === "Meet Gandhi", `Unexpected resume title: ${resumeTitle}`);
 }

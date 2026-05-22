@@ -50,7 +50,7 @@ Then run:
 npm run verify
 ```
 
-The verifier checks the homepage, broad hero copy, project cards, visual labels, project detail routes, resume route, mobile/desktop layouts, and contact-form validation.
+The verifier checks the homepage, broad hero copy, project cards, visual labels, project detail routes, resume route, mobile/desktop layouts, contact-form validation, and visible mojibake regressions.
 
 ## Project Manifest
 

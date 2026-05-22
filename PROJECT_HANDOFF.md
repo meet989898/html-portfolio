@@ -76,7 +76,7 @@ npm run start -- --hostname 127.0.0.1 --port 3000
 npm run verify
 ```
 
-The verifier checks desktop and mobile rendering, homepage copy, project cards, visual labels, every project route, the resume route, and contact-form required-field validation.
+The verifier checks desktop and mobile rendering, homepage copy, project cards, visual labels, every project route, the resume route, contact-form required-field validation, and visible mojibake regressions.
 
 ## Contact Form Setup
 

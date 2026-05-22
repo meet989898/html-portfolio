@@ -170,7 +170,7 @@ export default function Home() {
                       <div>
                         <h3 className="text-xl font-semibold">{item.role}</h3>
                         <p className="mt-1 text-sm text-black/58">
-                          {item.organization} · {item.location}
+                          {item.organization} {"\u00B7"} {item.location}
                         </p>
                       </div>
                       <p className="text-sm font-medium text-black/55">{item.period}</p>
@@ -284,7 +284,7 @@ export default function Home() {
 
       <footer className="border-t border-black/10 bg-[#f7f3ea] px-4 py-7 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 text-sm text-black/58 sm:flex-row">
-          <p>© 2026 {profile.name}</p>
+          <p>{"\u00A9"} 2026 {profile.name}</p>
           <div className="flex flex-wrap gap-4">
             <Link className="hover:text-black" href="/resume">
               Web resume

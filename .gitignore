@@ -7,3 +7,5 @@ node_modules/
 !.env.example
 NEXT_PROJECT_PROPOSAL.md
 .DS_Store
+
+.vercel
