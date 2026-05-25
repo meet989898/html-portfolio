@@ -9,7 +9,9 @@ The new site is intentionally broader and more standalone. The homepage now pres
 Public routes:
 
 - `/`: main portfolio homepage
+- `/projects`: filterable project index
 - `/projects/[slug]`: project case-study pages
+- `/chess`: always-on SIMBA chess demo landing page
 - `/resume`: web resume
 - `/api/contact`: contact form endpoint
 
@@ -19,8 +21,8 @@ Public routes:
 - **TypeScript**: safer component props, route data, and content handling.
 - **Tailwind CSS**: responsive layout and visual styling.
 - **shadcn/ui**: owned UI primitives such as buttons, badges, cards, tabs, inputs, and textarea.
-- **Framer Motion**: section entrance motion.
-- **React Three Fiber / Three.js**: interactive 3D hero accent.
+- **Framer Motion**: section entrance motion, scroll progress, and hover interactions.
+- **React Three Fiber / Three.js**: pointer-reactive 3D hero accent.
 - **Zod**: typed project manifest validation during build.
 - **Resend**: planned production email delivery for the contact form.
 - **Playwright Core**: local browser smoke verification.
@@ -32,14 +34,18 @@ Public routes:
 - The portfolio website is not listed as a project.
 - Internal cadence/planning sections were removed from the public site.
 - Projects can be `Live`, `Building`, `Upcoming`, or `Research`, but concept visuals are clearly labeled so they are not mistaken for live screenshots.
-- The visual system uses a premium warm editorial base, dark product sections, generated SVG project media, and a small 3D hero scene.
+- The visual system uses a premium warm editorial base, dark product sections, generated SVG project media, the provided professional headshot, hover-tilt cards, scroll progress, and a pointer-reactive 3D hero scene.
+- `chess.meetgandhi.com` is intentionally an always-on Vercel landing page because the linked free Streamlit demo can sleep.
 
 ## Important Files
 
 - `src/app/page.tsx`: homepage.
+- `src/app/projects/page.tsx`: filterable project index.
 - `src/app/projects/[slug]/page.tsx`: project case-study route.
+- `src/app/chess/page.tsx`: SIMBA demo landing route.
 - `src/app/resume/page.tsx`: web resume route.
 - `src/app/api/contact/route.ts`: contact form API route.
+- `src/proxy.ts`: host-based subdomain routing.
 - `src/lib/projects.ts`: Zod schema and project manifest loading.
 - `src/lib/profile.ts`: profile, experience, education, and stack content.
 - `data/projects.json`: canonical project data.
@@ -76,7 +82,7 @@ npm run start -- --hostname 127.0.0.1 --port 3000
 npm run verify
 ```
 
-The verifier checks desktop and mobile rendering, homepage copy, project cards, visual labels, every project route, the resume route, contact-form required-field validation, and visible mojibake regressions.
+The verifier checks desktop and mobile rendering, homepage copy, canonical/social metadata, JSON-LD structured data, project cards, visual labels, every project route, the resume route, invalid-route 404 handling, contact-form required-field validation, and visible mojibake regressions.
 
 ## Contact Form Setup
 
@@ -88,7 +94,17 @@ CONTACT_TO_EMAIL=gandhi.meet.mg@gmail.com
 CONTACT_FROM_EMAIL=Portfolio <hello@meetgandhi.com>
 ```
 
-Resend may require domain verification for `meetgandhi.com` before `hello@meetgandhi.com` can send mail. Direct email links remain visible even before that setup is complete.
+Resend requires domain verification for `meetgandhi.com` before `hello@meetgandhi.com` can send mail. Direct email links remain visible even before that setup is complete. If an API key is exposed in chat or logs, revoke it and replace it directly in Vercel.
+
+To add a fresh key safely:
+
+```text
+Vercel Dashboard -> meet-gandhi-portfolio -> Settings -> Environment Variables
+Name: RESEND_API_KEY
+Value: paste the fresh Resend key
+Environments: Production, Preview, Development
+Save, then redeploy
+```
 
 ## Deployment Notes
 
@@ -104,6 +120,11 @@ Production domains:
 https://www.meetgandhi.com
 https://meetgandhi.com
 https://meetgandhi.dev
+https://resume.meetgandhi.com
+https://github.meetgandhi.com
+https://linkedin.meetgandhi.com
+https://projects.meetgandhi.com
+https://chess.meetgandhi.com
 ```
 
 Vercel should auto-detect the Next.js app and deploy every push to `main`.
@@ -114,7 +135,7 @@ Every resume-worthy project should include:
 
 - live demo
 - GitHub repository
-- screenshots or generated concept visuals
+- screenshots or generated concept visuals, with metadata that points at a real asset under `public/`
 - `portfolio.json` or compatible project metadata
 - README with architecture and metrics
 - tests and verification steps

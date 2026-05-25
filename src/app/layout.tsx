@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { buildSocialMetadata, siteMetadata } from "@/lib/metadata";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
@@ -15,21 +16,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.meetgandhi.com"),
+  metadataBase: new URL(siteMetadata.url),
   title: {
-    default: "Meet Gandhi | Software Engineer",
-    template: "%s | Meet Gandhi",
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.name}`,
   },
-  description:
-    "Meet Gandhi is a software engineer building reliable products across AI, data, backend, and full-stack systems.",
-  openGraph: {
-    title: "Meet Gandhi | Software Engineer",
-    description:
-      "Portfolio for software engineering, AI, backend, data, full-stack, and research work.",
-    url: "https://www.meetgandhi.com",
-    siteName: "Meet Gandhi",
-    type: "website",
+  description: siteMetadata.description,
+  icons: {
+    icon: "/favicon.svg",
   },
+  ...buildSocialMetadata({
+    title: siteMetadata.title,
+    description: "Portfolio for software engineering, AI, backend, data, full-stack, and research work.",
+    path: "/",
+    imageAlt: "Meet Gandhi portfolio preview",
+  }),
 };
 
 export default function RootLayout({

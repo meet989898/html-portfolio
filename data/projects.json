@@ -3,7 +3,7 @@
     "title": "SIMBA",
     "slug": "simba",
     "subtitle": "Similarity search for chess decision spaces",
-    "cardStatus": "Live repository",
+    "cardStatus": "Live Streamlit demo",
     "status": "live",
     "statusLabel": "Live",
     "featuredOrder": 0,
@@ -12,7 +12,7 @@
     "roleSignals": ["Machine learning", "Backend engineering", "Data systems"],
     "techStack": ["Python", "FAISS", "PyTorch", "AWS"],
     "portfolioTags": ["ml", "backend", "data"],
-    "demoUrl": "",
+    "demoUrl": "https://chess-meet.streamlit.app/",
     "repoUrl": "https://github.com/meet989898/SIMBA",
     "metrics": ["Large search space", "Ranking evaluation", "Interactive querying"],
     "resumeBullets": [
@@ -22,7 +22,7 @@
       "src": "/visuals/simba-concept.svg",
       "alt": "Concept visual showing a chessboard connected to search and ranking signals",
       "type": "concept",
-      "caption": "Concept visual; live demo screenshots will replace this as the project UI matures."
+      "caption": "Concept visual; the live Streamlit demo is linked while a more reliable demo stack is planned."
     },
     "caseStudy": {
       "problem": "Chess positions create a high-dimensional comparison problem where exact matches are less useful than strategically similar examples.",
@@ -33,7 +33,8 @@
       ],
       "outcome": [
         "Shows algorithmic thinking across representation, retrieval, ranking, and service design.",
-        "Creates a foundation for a public demo where users can query positions and inspect similar results."
+        "Creates a foundation for a public demo where users can query positions and inspect similar results.",
+        "Now has an always-on portfolio landing page so the project remains accessible even when the free Streamlit demo sleeps."
       ]
     }
   },

@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/site-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { buildProjectPageJsonLd, buildSocialMetadata, serializeJsonLd } from "@/lib/metadata";
 import { getProject, projects } from "@/lib/projects";
 
 type ProjectPageProps = {
@@ -24,12 +25,20 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const project = getProject(slug);
 
   if (!project) {
-    return { title: "Project not found | Meet Gandhi" };
+    return { title: "Project not found" };
   }
 
   return {
-    title: `${project.title} | Meet Gandhi`,
+    title: project.title,
     description: project.summary,
+    ...buildSocialMetadata({
+      title: project.title,
+      description: project.summary,
+      path: `/projects/${project.slug}`,
+      imagePath: project.visual.src,
+      imageAlt: project.visual.alt,
+      openGraphType: "article",
+    }),
   };
 }
 
@@ -41,8 +50,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const structuredData = serializeJsonLd(buildProjectPageJsonLd(project));
+
   return (
     <div className="min-h-screen bg-[#f7f3ea] text-black">
+      <script dangerouslySetInnerHTML={{ __html: structuredData }} type="application/ld+json" />
       <SiteHeader />
       <main>
         <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -69,7 +81,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="flex flex-wrap gap-3">
                 {project.repoUrl ? (
                   <Button asChild className="rounded-full bg-black text-white hover:bg-black/85">
-                    <a href={project.repoUrl} rel="noreferrer" target="_blank">
+                    <a href={project.repoUrl} rel="noopener noreferrer" target="_blank">
                       <Code2 className="size-4" />
                       Repository
                     </a>
@@ -77,7 +89,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 ) : null}
                 {project.demoUrl ? (
                   <Button asChild className="rounded-full" variant="outline">
-                    <a href={project.demoUrl} rel="noreferrer" target="_blank">
+                    <a href={project.demoUrl} rel="noopener noreferrer" target="_blank">
                       Demo
                       <ArrowUpRight className="size-4" />
                     </a>

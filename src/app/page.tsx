@@ -13,6 +13,7 @@ import {
 import { AnimatedSection } from "@/components/animated-section";
 import { ContactForm } from "@/components/contact-form";
 import { HeroVisual } from "@/components/hero-visual";
+import { ProfilePhoto } from "@/components/profile-photo";
 import { ProjectCard } from "@/components/project-card";
 import { ProjectVisual } from "@/components/project-visual";
 import { SiteHeader } from "@/components/site-header";
@@ -20,12 +21,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { buildPersonJsonLd, buildWebsiteJsonLd, serializeJsonLd } from "@/lib/metadata";
 import { education, experience, focusAreas, profile, quickSignals, stats, techGroups } from "@/lib/profile";
 import { featuredProjects, projects } from "@/lib/projects";
 
 export default function Home() {
+  const structuredData = serializeJsonLd([buildWebsiteJsonLd(), buildPersonJsonLd(profile)]);
+
   return (
     <div className="min-h-screen bg-[#f7f3ea] text-black">
+      <script dangerouslySetInnerHTML={{ __html: structuredData }} type="application/ld+json" />
       <SiteHeader />
       <main>
         <section className="relative overflow-hidden border-b border-black/10">
@@ -51,10 +56,10 @@ export default function Home() {
                   </Link>
                 </Button>
                 <Button asChild className="rounded-full border-black/15 bg-white/70" size="lg" variant="outline">
-                  <a href={profile.resume}>
+                  <Link href="/resume">
                     <Download className="size-4" />
                     Resume
-                  </a>
+                  </Link>
                 </Button>
                 <Button asChild className="rounded-full border-black/15 bg-white/70" size="lg" variant="outline">
                   <a href={`mailto:${profile.email}`}>
@@ -70,7 +75,7 @@ export default function Home() {
           </div>
         </section>
 
-        <AnimatedSection className="relative z-20 mx-auto -mt-10 grid max-w-7xl gap-4 px-4 pb-8 pt-0 sm:-mt-16 sm:px-6 md:grid-cols-3 lg:grid-cols-6 lg:px-8">
+        <AnimatedSection className="relative z-20 mx-auto mt-6 grid max-w-7xl gap-4 px-4 pb-8 pt-0 sm:-mt-16 sm:px-6 md:grid-cols-3 lg:grid-cols-6 lg:px-8">
           {stats.map((stat) => (
             <div className="rounded-3xl border border-black/10 bg-white/70 p-5 shadow-sm backdrop-blur" key={stat.label}>
               <p className="text-3xl font-semibold tracking-tight">{stat.value}</p>
@@ -86,12 +91,25 @@ export default function Home() {
         </AnimatedSection>
 
         <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8" id="about">
-          <AnimatedSection className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
-            <div>
+          <AnimatedSection className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="space-y-6">
               <p className="text-sm font-semibold uppercase text-[#d65a31]">Focus</p>
               <h2 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
                 Broad CS depth, presented without buzzword overload.
               </h2>
+              <div className="grid gap-4 sm:grid-cols-[12rem_1fr]">
+                <ProfilePhoto className="h-60 sm:h-full" />
+                <div className="rounded-[1.6rem] border border-black/10 bg-white/70 p-5 shadow-sm">
+                  <p className="text-sm leading-7 text-black/62">{profile.intro}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {["AI", "Backend", "Data", "Full-stack"].map((item) => (
+                      <span className="rounded-full bg-black px-3 py-1 text-xs font-medium text-white" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {focusAreas.map((area) => (
@@ -115,7 +133,7 @@ export default function Home() {
                 </h2>
               </div>
               <Button asChild className="w-fit rounded-full bg-white text-black hover:bg-white/90">
-                <a href={profile.github} rel="noreferrer" target="_blank">
+                <a href={profile.github} rel="noopener noreferrer" target="_blank">
                   <Code2 className="size-4" />
                   GitHub
                 </a>
@@ -253,6 +271,21 @@ export default function Home() {
               <p className="max-w-xl text-base leading-8 text-white/68">
                 Use the form for quick notes, or reach me directly through email and social links.
               </p>
+              <div className="grid gap-4 sm:grid-cols-[9rem_1fr] sm:items-stretch">
+                <ProfilePhoto className="h-44 border-white/15 bg-white/10" />
+                <div className="rounded-[1.6rem] border border-white/15 bg-white/10 p-5 backdrop-blur">
+                  <p className="text-sm font-semibold uppercase text-white/45">Quick links</p>
+                  <p className="mt-3 text-sm leading-7 text-white/68">
+                    Prefer direct links? The branded shortcuts below stay memorable across resumes, applications, and project demos.
+                  </p>
+                  <div className="mt-4 grid gap-2 text-sm text-white/78 sm:grid-cols-2">
+                    <span>resume.meetgandhi.com</span>
+                    <span>projects.meetgandhi.com</span>
+                    <span>github.meetgandhi.com</span>
+                    <span>linkedin.meetgandhi.com</span>
+                  </div>
+                </div>
+              </div>
               <Separator className="bg-white/15" />
               <div className="flex flex-wrap gap-3">
                 <Button asChild className="rounded-full bg-white text-black hover:bg-white/90">
@@ -262,13 +295,13 @@ export default function Home() {
                   </a>
                 </Button>
                 <Button asChild className="rounded-full border-white/20 text-white hover:bg-white/10" variant="outline">
-                  <a href={profile.linkedin} rel="noreferrer" target="_blank">
+                  <a href={profile.linkedin} rel="noopener noreferrer" target="_blank">
                     <BriefcaseBusiness className="size-4" />
                     LinkedIn
                   </a>
                 </Button>
                 <Button asChild className="rounded-full border-white/20 text-white hover:bg-white/10" variant="outline">
-                  <a href={profile.github} rel="noreferrer" target="_blank">
+                  <a href={profile.github} rel="noopener noreferrer" target="_blank">
                     <Code2 className="size-4" />
                     GitHub
                   </a>
@@ -289,10 +322,10 @@ export default function Home() {
             <Link className="hover:text-black" href="/resume">
               Web resume
             </Link>
-            <a className="hover:text-black" href={profile.resume}>
+            <a className="hover:text-black" download="Meet_Gandhi_Resume.pdf" href={profile.resume}>
               PDF resume
             </a>
-            <a className="inline-flex items-center gap-1 hover:text-black" href={profile.linkedin} rel="noreferrer" target="_blank">
+            <a className="inline-flex items-center gap-1 hover:text-black" href={profile.linkedin} rel="noopener noreferrer" target="_blank">
               LinkedIn
               <ArrowUpRight className="size-3" />
             </a>

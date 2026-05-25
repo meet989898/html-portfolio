@@ -2,7 +2,7 @@
 
 Public portfolio for [meetgandhi.com](https://www.meetgandhi.com).
 
-The site is now a React/Next.js portfolio with broad CS positioning, project case-study routes, generated project visuals, a web resume, and a Resend-backed contact API.
+The site is now a React/Next.js portfolio with broad CS positioning, project case-study routes, generated project visuals, a polished web resume, branded subdomain shortcuts, and a Resend-backed contact API.
 
 ## Stack
 
@@ -15,6 +15,15 @@ The site is now a React/Next.js portfolio with broad CS positioning, project cas
 - Zod
 - Resend
 - Vercel
+
+## Public Routes
+
+- `/`: portfolio homepage
+- `/projects`: filterable project index
+- `/projects/[slug]`: project case studies
+- `/chess`: SIMBA chess demo landing page
+- `/resume`: web resume
+- `/api/contact`: contact endpoint
 
 ## Local Development
 
@@ -50,7 +59,7 @@ Then run:
 npm run verify
 ```
 
-The verifier checks the homepage, broad hero copy, project cards, visual labels, project detail routes, resume route, mobile/desktop layouts, contact-form validation, and visible mojibake regressions.
+The verifier checks the homepage, broad hero copy, canonical/social metadata, JSON-LD structured data, project cards, visual labels, project detail routes, resume route, invalid-route 404 handling, mobile/desktop layouts, contact-form validation, and visible mojibake regressions.
 
 ## Project Manifest
 
@@ -61,7 +70,7 @@ Each project should include:
 - status and featured order
 - role signals
 - tech stack
-- visual asset metadata
+- visual asset metadata with a rooted `visual.src` path to a real file under `public/`
 - resume bullets
 - case-study problem, approach, and outcome
 
@@ -76,3 +85,17 @@ CONTACT_FROM_EMAIL
 ```
 
 Until those are configured, the site still exposes direct email and social links.
+
+`CONTACT_TO_EMAIL` and `CONTACT_FROM_EMAIL` can be set safely in Vercel because they are not secrets. `RESEND_API_KEY` must be added directly in the Vercel dashboard or CLI and should never be committed.
+
+If a Resend key is ever pasted into chat or logs, revoke it and create a fresh key before using it in production.
+
+## Branded Shortcuts
+
+The same Vercel project handles these domains:
+
+- `resume.meetgandhi.com` -> latest resume PDF
+- `github.meetgandhi.com` -> GitHub profile
+- `linkedin.meetgandhi.com` -> LinkedIn profile
+- `projects.meetgandhi.com` -> project index
+- `chess.meetgandhi.com` -> always-on SIMBA landing page

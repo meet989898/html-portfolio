@@ -42,8 +42,20 @@
         "items": { "enum": ["ai", "ml", "data", "backend", "frontend", "research"] },
         "minItems": 1
       },
-      "demoUrl": { "type": "string" },
-      "repoUrl": { "type": "string" },
+      "demoUrl": {
+        "type": "string",
+        "anyOf": [
+          { "const": "" },
+          { "format": "uri", "pattern": "^https://" }
+        ]
+      },
+      "repoUrl": {
+        "type": "string",
+        "anyOf": [
+          { "const": "" },
+          { "format": "uri", "pattern": "^https://" }
+        ]
+      },
       "metrics": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
       "resumeBullets": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
       "visual": {
@@ -51,7 +63,7 @@
         "additionalProperties": false,
         "required": ["src", "alt", "type", "caption"],
         "properties": {
-          "src": { "type": "string", "minLength": 1 },
+          "src": { "type": "string", "minLength": 1, "pattern": "^/" },
           "alt": { "type": "string", "minLength": 1 },
           "type": { "enum": ["concept", "screenshot"] },
           "caption": { "type": "string", "minLength": 1 }

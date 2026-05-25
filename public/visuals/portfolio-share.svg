@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Meet Gandhi portfolio share image</title>
+  <desc id="desc">Editorial-style share image for Meet Gandhi's software engineering portfolio.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7f3ea" />
+      <stop offset="100%" stop-color="#efe5d1" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111315" />
+      <stop offset="100%" stop-color="#1f2327" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g opacity="0.18">
+    <path d="M0 112h1200M0 224h1200M0 336h1200M0 448h1200M0 560h1200" stroke="#111315" />
+    <path d="M120 0v630M240 0v630M360 0v630M480 0v630M600 0v630M720 0v630M840 0v630M960 0v630M1080 0v630" stroke="#111315" />
+  </g>
+  <rect x="70" y="70" width="1060" height="490" rx="34" fill="url(#panel)" />
+  <rect x="120" y="120" width="112" height="112" rx="28" fill="#d65a31" />
+  <text x="176" y="190" fill="#fff8ee" font-family="Arial, sans-serif" font-size="42" font-weight="700" text-anchor="middle">MG</text>
+  <text x="120" y="320" fill="#f7f3ea" font-family="Arial, sans-serif" font-size="74" font-weight="700">Meet Gandhi</text>
+  <text x="120" y="382" fill="#d7d1c5" font-family="Arial, sans-serif" font-size="31">Software engineer building reliable products</text>
+  <text x="120" y="425" fill="#d7d1c5" font-family="Arial, sans-serif" font-size="31">across AI, data, backend, and full-stack systems.</text>
+  <g transform="translate(120 472)">
+    <rect width="182" height="42" rx="21" fill="#fff8ee" opacity="0.12" />
+    <text x="91" y="27" fill="#fff8ee" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">AI + Data Systems</text>
+  </g>
+  <g transform="translate(320 472)">
+    <rect width="184" height="42" rx="21" fill="#fff8ee" opacity="0.12" />
+    <text x="92" y="27" fill="#fff8ee" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Backend + APIs</text>
+  </g>
+  <g transform="translate(522 472)">
+    <rect width="206" height="42" rx="21" fill="#fff8ee" opacity="0.12" />
+    <text x="103" y="27" fill="#fff8ee" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Portfolio Case Studies</text>
+  </g>
+  <circle cx="940" cy="220" r="96" fill="#d65a31" opacity="0.14" />
+  <circle cx="1020" cy="300" r="72" fill="#9df27f" opacity="0.16" />
+  <circle cx="910" cy="360" r="58" fill="#50c8ff" opacity="0.18" />
+  <path d="M822 410c28-89 84-157 170-203" fill="none" stroke="#fff8ee" stroke-linecap="round" stroke-width="5" opacity="0.55" />
+  <path d="M852 444c67-25 126-26 206-3" fill="none" stroke="#fff8ee" stroke-linecap="round" stroke-width="5" opacity="0.42" />
+  <text x="120" y="540" fill="#bfb6a6" font-family="Arial, sans-serif" font-size="20">meetgandhi.com</text>

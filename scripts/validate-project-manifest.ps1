@@ -34,13 +34,36 @@ function Assert-OptionalUrl([string]$Value, [string]$PropertyName, [string]$Proj
     return
   }
 
-  if ($Value.StartsWith("#")) {
-    return
-  }
-
   $uri = $null
   if (-not [System.Uri]::TryCreate($Value, [System.UriKind]::Absolute, [ref]$uri)) {
-    Fail "${ProjectTitle}: '$PropertyName' must be an absolute URL or an empty string."
+    Fail "${ProjectTitle}: '$PropertyName' must be an HTTPS URL or an empty string."
+  }
+
+  if ($uri.Scheme -ne [System.Uri]::UriSchemeHttps) {
+    Fail "${ProjectTitle}: '$PropertyName' must use HTTPS when provided."
+  }
+}
+
+function Assert-VisualAsset([string]$Value, [string]$ProjectTitle, [string]$PublicRoot) {
+  if ([string]::IsNullOrWhiteSpace($Value)) {
+    Fail "${ProjectTitle}: visual 'src' must not be empty."
+  }
+
+  if (-not $Value.StartsWith("/")) {
+    Fail "${ProjectTitle}: visual 'src' must start with '/'."
+  }
+
+  $relativePath = $Value.TrimStart("/") -replace "/", [System.IO.Path]::DirectorySeparatorChar
+  $publicRootPath = [System.IO.Path]::GetFullPath($PublicRoot)
+  $assetPath = [System.IO.Path]::GetFullPath((Join-Path $publicRootPath $relativePath))
+  $normalizedPublicRoot = $publicRootPath.TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar) + [System.IO.Path]::DirectorySeparatorChar
+
+  if (-not $assetPath.StartsWith($normalizedPublicRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+    Fail "${ProjectTitle}: visual 'src' must stay within the public directory."
+  }
+
+  if (-not (Test-Path -LiteralPath $assetPath -PathType Leaf)) {
+    Fail "${ProjectTitle}: visual 'src' points to a missing asset '$Value'."
   }
 }
 
@@ -70,6 +93,8 @@ $requiredProperties = @(
 
 $schema = Get-Content $SchemaPath -Raw | ConvertFrom-Json
 $projects = Get-Content $DataPath -Raw | ConvertFrom-Json
+$repoRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
+$publicRoot = Join-Path $repoRoot "public"
 
 if ($schema.type -ne "array") {
   Fail "Schema root type must be 'array'."
@@ -85,6 +110,7 @@ if ($projectList.Count -eq 0) {
 }
 
 $seenSlugs = @{}
+$seenFeaturedOrders = @{}
 
 foreach ($project in $projectList) {
   foreach ($property in $requiredProperties) {
@@ -130,6 +156,11 @@ foreach ($project in $projectList) {
     Fail "$($project.title): 'featuredOrder' must be an integer."
   }
 
+  if ($seenFeaturedOrders.ContainsKey($project.featuredOrder)) {
+    Fail "$($project.title): duplicate featuredOrder '$($project.featuredOrder)'."
+  }
+  $seenFeaturedOrders[$project.featuredOrder] = $true
+
   $null = Assert-StringArray $project.roleSignals "roleSignals" $project.title
   $null = Assert-StringArray $project.techStack "techStack" $project.title
   $portfolioTags = Assert-StringArray $project.portfolioTags "portfolioTags" $project.title
@@ -157,6 +188,7 @@ foreach ($project in $projectList) {
       Fail "$($project.title): visual '$property' must not be empty."
     }
   }
+  Assert-VisualAsset $project.visual.src $project.title $publicRoot
   if ($project.visual.type -notin $allowedVisualTypes) {
     Fail "$($project.title): unsupported visual type '$($project.visual.type)'."
   }

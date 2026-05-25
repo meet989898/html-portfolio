@@ -19,6 +19,7 @@ export const profile = {
   github: "https://github.com/meet989898",
   linkedin: "https://www.linkedin.com/in/meetjg/",
   resume: "/assets/Meet_Gandhi_Resume.pdf",
+  headshot: "/assets/meet-gandhi-headshot.jpg",
   headline:
     "Software engineer building reliable products across AI, data, backend, and full-stack systems.",
   intro:
